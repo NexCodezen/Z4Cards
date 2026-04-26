@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Open Box Game</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="login-card">
+            <div class="logo">
+                <h2>🃏 Open Box Game</h2>
+            </div>
+            
+            <!-- Login Google -->
+            <div id="g_id_onload"
+                 data-client_id="SUA_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
+                 data-callback="handleGoogleSignIn"
+                 data-auto_prompt="false">
+            </div>
+            <div class="g_id_signin" data-type="standard"></div>
+
+            <!-- Divider -->
+            <div class="divider">
+                <span>ou</span>
+            </div>
+
+            <!-- Login Tradicional -->
+            <form id="loginForm" class="login-form">
+                <div class="input-group">
+                    <label>Usuário</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="input-group">
+                    <label>Senha</label>
+                    <input type="password" id="password" required>
+                </div>
+                <button type="submit" class="btn-primary full-width">Entrar</button>
+            </form>
+
+            <!-- Criar Conta -->
+            <div class="create-account">
+                <p>Não tem conta? <a href="#" id="showRegister">Crie uma agora!</a></p>
+            </div>
+
+            <!-- Registro -->
+            <form id="registerForm" class="login-form hidden">
+                <div class="input-group">
+                    <label>Nome de Usuário</label>
+                    <input type="text" id="regUsername" required>
+                </div>
+                <div class="input-group">
+                    <label>Email</label>
+                    <input type="email" id="regEmail" required>
+                </div>
+                <div class="input-group">
+                    <label>Senha</label>
+                    <input type="password" id="regPassword" required>
+                </div>
+                <button type="submit" class="btn-primary full-width">Criar Conta</button>
+            </form>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
