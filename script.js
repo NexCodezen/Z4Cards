@@ -252,3 +252,58 @@ function showSection(sectionId) {
     
     const section = document.getElementById(sectionId);
     if (
+        // Capturando os elementos
+const registerForm = document.getElementById('registerForm');
+
+registerForm.addEventListener('submit', (e) => {
+    e.preventDefault(); // Impede a página de recarregar
+
+    const username = document.getElementById('regUsername').value;
+    const email = document.getElementById('regEmail').value;
+    const password = document.getElementById('regPassword').value;
+
+    // Criando o objeto do usuário
+    const newUser = { username, email, password };
+
+    // Salvando no navegador (Simulando um banco de dados)
+    localStorage.setItem(username, JSON.stringify(newUser));
+
+    alert("Conta criada com sucesso! Agora faça login.");
+    location.reload(); // Recarrega para voltar à tela de login
+});
+const loginForm = document.getElementById('loginForm');
+
+loginForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const userIn = document.getElementById('username').value;
+    const passIn = document.getElementById('password').value;
+
+    // 1. Verificação do ADM pré-definido
+    if (userIn === "admin" && passIn === "1234") {
+        alert("Bem-vindo, Administrador!");
+        window.location.href = "dashboard_admin.html"; // Mude para sua página de ADM
+        return;
+    }
+
+    // 2. Verificação de usuários comuns no localStorage
+    const storedUser = localStorage.getItem(userIn);
+    
+    if (storedUser) {
+        const userData = JSON.parse(storedUser);
+        if (userData.password === passIn) {
+            alert("Login realizado com sucesso!");
+            window.location.href = "index.html"; 
+        } else {
+            alert("Senha incorreta!");
+        }
+    } else {
+        alert("Usuário não encontrado!");
+    }
+});
+document.getElementById('showRegister').addEventListener('click', () => {
+    document.getElementById('loginForm').classList.add('hidden');
+    document.getElementById('registerForm').classList.remove('hidden');
+    document.querySelector('.divider').classList.add('hidden');
+    document.querySelector('.g_id_signin').classList.add('hidden');
+});
